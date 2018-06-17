@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <h1>Course Navigator ({{courses.length}})</h1>
+
+  <div class="row">
+    <div class="col-3">
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Courses
+        </li>
+        <li class="list-group-item webdev"
+            *ngFor="let course of courses"
+            (click)="selectCourse(course.id)"
+            [ngClass]="{'active' : course.id === selectedCourseId}">
+          {{course.title}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-3">
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Modules
+        </li>
+        <li class="list-group-item webdev"
+            *ngFor="let module of modules"
+            (click)="selectModule(module.id)"
+            [ngClass]="{'active': module.id === selectedModuleId}">
+          {{module.title}}
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="col-3">
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Lessons
+        </li>
+        <li class="list-group-item webdev"
+            *ngFor="let lesson of lessons"
+            (click)="selectLesson(lesson.id)"
+            [ngClass]="{'active': lesson.id === selectedLessonId}">
+          {{lesson.title}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-3">
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Widgets
+        </li>
+        <li class="list-group-item"
+            *ngFor="let widget of widgets">
+          {{widget.title}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

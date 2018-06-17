@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Log In</h1>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Username</label>
+    <div class="col-8">
+      <input [(ngModel)]="username"
+             placeholder="username"
+             class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-8">
+      <input [(ngModel)]="password"
+             placeholder="password"
+             class="form-control"
+             type="password"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"></label>
+    <div class="col-8">
+      <button (click)="login(username, password)"
+              class="btn btn-primary btn-block">
+        Login
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"></label>
+    <div class="col-8">
+      <a routerLink="/register">Register</a>
+      <a routerLink="/home" class="float-right">Home</a>
+    </div>
+  </div>
+
+</div>

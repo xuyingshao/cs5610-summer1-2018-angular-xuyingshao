@@ -1,0 +1,96 @@
+<div class="container">
+  <h1>Profile</h1>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Username</label>
+    <div class="col-8">
+      <input [(ngModel)]="user.username"
+             placeholder="username"
+             class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">First Name</label>
+    <div class="col-8">
+      <input [(ngModel)]="user.firstName"
+             placeholder="first name"
+             class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Last Name</label>
+    <div class="col-8">
+      <input [(ngModel)]="user.lastName"
+             placeholder="last name"
+             class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Email</label>
+    <div class="col-8">
+      <input [(ngModel)]="user.email"
+             placeholder="email"
+             class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Phone</label>
+    <div class="col-8">
+      <input [(ngModel)]="user.phone"
+             placeholder="phone"
+             class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Address</label>
+    <div class="col-8">
+      <input [(ngModel)]="user.address"
+             placeholder="address"
+             class="form-control"/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"></label>
+    <div class="col-8">
+      <button (click)="update()"
+              class="btn btn-success btn-block">
+        Update
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"></label>
+    <div class="col-8">
+      <button (click)="logout()"
+              class="btn btn-primary btn-block">
+        Logout
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"></label>
+    <div class="col-8">
+      <a routerLink="/home" class="float-right">Home</a>
+    </div>
+  </div>
+
+  <h2>Sections {{enrollments.length}}</h2>
+  <ul class="list-group">
+    <li class="list-group-item"
+        *ngFor="let enrollment of enrollments">
+      {{enrollment.section.name}}({{enrollment.section.seats}})
+      <button class="btn btn-primary float-right"
+              (click)="unenroll(enrollment.section._id)">Unenroll
+      </button>
+    </li>
+  </ul>
+
+</div>
