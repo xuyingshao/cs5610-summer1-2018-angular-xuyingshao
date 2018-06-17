@@ -1,0 +1,76 @@
+<div class="container-fluid">
+
+  <div class="container-fluid row">
+    <h1 class="col-4">
+      Section Editor
+    </h1>
+    <span class="text-right col-8">
+    <a routerLink="/profile">Profile</a>
+      &nbsp;/&nbsp;
+    <a routerLink="/home">Home</a>
+    </span>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Courses
+        </li>
+        <li class="list-group-item webdev"
+            *ngFor="let course of courses"
+            (click)="selectCourse(course.id)"
+            [ngClass]="{'active' : course.id == selectedCourse}">
+          {{course.title}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-3">
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Sections
+        </li>
+        <li class="list-group-item webdev"
+            *ngFor="let section of sections"
+            [ngClass]="{'active' : section._id == selectedSection}">
+          <div (click)="selectSection(section._id)">{{section.name}}</div>
+          <button class="btn btn-danger"
+                  (click)="removeSection(section._id)">Remove Section
+          </button>
+          <!--<button class="btn btn-primary"-->
+                  <!--(click)="enableEditing()">Edit Section-->
+          <!--</button>-->
+        </li>
+      </ul>
+      <input placeholder="Section Name"
+             class="form-control"
+             [(ngModel)]="sectionName"/>
+      <input placeholder="Seats available"
+             class="form-control"
+             [(ngModel)]="seats"/>
+      <button class="btn btn-success btn-block"
+              (click)="createSection(sectionName, seats)">Add Section
+      </button>
+    </div>
+
+
+    <div class="col-3">
+      <ul class="list-group">
+        <li class="list-group-item active">
+          Section Detail
+        </li>
+      </ul>
+      <input placeholder="Section Name"
+             class="form-control"
+             [(ngModel)]="section.name"/>
+      <input placeholder="Section Seats"
+             class="form-control"
+             [(ngModel)]="section.seats"/>
+      <button class="btn btn-success btn-block"
+              (click)="updateSection(section._id, section.name, section.seats)">Update Section
+      </button>
+    </div>
+
+  </div>
+</div>

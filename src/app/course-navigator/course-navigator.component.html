@@ -1,5 +1,10 @@
 <div class="container-fluid">
-  <h1>Course Navigator ({{courses.length}})</h1>
+
+  <div class="container-fluid row">
+    <i routerLink="/home"
+       class="fa fa-home"></i>
+    <h1>Course Navigator ({{courses.length}})</h1>
+  </div>
 
   <div class="row">
     <div class="col-3">
@@ -28,7 +33,6 @@
           {{module.title}}
         </li>
       </ul>
-
     </div>
 
     <div class="col-3">

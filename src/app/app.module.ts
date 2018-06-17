@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
-import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {WhiteBoardComponent} from './white-board/white-board.component';
 import {CourseNavigatorComponent} from './course-navigator/course-navigator.component';
 import {CourseNavigatorServiceClient} from './services/course-navigator.service.client';
@@ -24,12 +23,13 @@ import {UserServiceClient} from './services/user.service.client';
 import { SectionListComponent } from './section-list/section-list.component';
 import {SectionServiceClient} from './services/section.service.client';
 import {EnrollmentServiceClient} from './services/enrollment.service.client';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import {SessionServiceClient} from './services/session.service.client';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloWorldComponent,
     WhiteBoardComponent,
     CourseNavigatorComponent,
     CourseGridComponent,
@@ -41,6 +41,7 @@ import {EnrollmentServiceClient} from './services/enrollment.service.client';
     RegisterComponent,
     ProfileComponent,
     SectionListComponent,
+    AdminPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +56,8 @@ import {EnrollmentServiceClient} from './services/enrollment.service.client';
     WidgetServiceClient,
     UserServiceClient,
     SectionServiceClient,
-    EnrollmentServiceClient
+    EnrollmentServiceClient,
+    SessionServiceClient
   ],
   bootstrap: [AppComponent]
 })

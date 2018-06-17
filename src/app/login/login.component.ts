@@ -17,10 +17,6 @@ export class LoginComponent implements OnInit {
   password;
 
   login(username, password) {
-
-    // console.log(username + ' in login');
-    // console.log(password + ' in login');
-
     this.service.login(username, password)
       .then((response) => {
         if (response.status !== 404) {

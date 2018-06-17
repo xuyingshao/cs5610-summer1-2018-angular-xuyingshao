@@ -1,15 +1,13 @@
 <div class="container-fluid">
-  <h1>Sections for course: {{courseId}}</h1>
 
-  <input placeholder="Section Name"
-         class="form-control"
-         [(ngModel)]="sectionName"/>
-  <input placeholder="Seats available"
-         class="form-control"
-         [(ngModel)]="seats"/>
-  <button class="btn btn-success btn-block"
-          (click)="createSection(sectionName, seats)">Add Section
-  </button>
+  <div class="container-fluid row">
+    <h1 class="col-4">
+      Section List
+    </h1>
+    <span class="text-right col-8">
+    <a routerLink="/home">Go Back</a>
+    </span>
+  </div>
 
   <ul class="list-group">
     <li class="list-group-item"

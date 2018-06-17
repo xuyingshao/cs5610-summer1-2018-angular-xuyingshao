@@ -1,4 +1,10 @@
 <div class="container-fluid">
-  <h2>{{course.title}}</h2>
+  <div class="container-fluid row">
+
+      <h1 class="col-4">Course Viewer</h1>
+    <a routerLink="/home"
+       class="text-right col-8">Home</a>
+  </div>
+  <h1>{{course.title}}</h1>
   <app-module-list></app-module-list>
 </div>

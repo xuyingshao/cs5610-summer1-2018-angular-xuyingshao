@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     if (password !== password2) {
       alert('passwords don\'t match!');
     } else {
-      this.service.createUser(username, password)
+      this.service.register(username, password)
         .then((response) => {
           if (response.status === 409) {
             alert('username already exists!');
@@ -32,7 +32,5 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

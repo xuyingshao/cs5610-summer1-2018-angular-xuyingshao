@@ -27,17 +27,26 @@ export class ProfileComponent implements OnInit {
   }
 
   unenroll(sectionId) {
-    this.enrollmentService.unenrollStudentFromSection(sectionId);
+    this.enrollmentService.unenrollStudentFromSection(sectionId)
+      .then(() => this.loadEnrollments());
   }
 
-  ngOnInit() {
-    this.service.profile()
-      .then(user => this.user = user);
-
+  loadEnrollments() {
     this.enrollmentService.findEnrollmentsForStudent()
       .then((enrollments) => {
         this.enrollments = enrollments;
       });
+  }
 
+  update() {
+    this.service.updateProfile(this.user)
+      .then(() => this.loadEnrollments());
+  }
+
+
+  ngOnInit() {
+    this.service.profile()
+      .then(user => this.user = user);
+    this.loadEnrollments();
   }
 }

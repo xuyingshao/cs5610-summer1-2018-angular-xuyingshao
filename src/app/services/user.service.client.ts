@@ -7,19 +7,20 @@ export class UserServiceClient {
   // LOGOUT_URL = 'http://localhost:4000/api/logout';
   // SECTION_URL = 'http://localhost:4000/api/section';
 
+  REGISTER_URL = constants.NODE_URL + '/api/register';
   USER_URL = constants.NODE_URL + '/api/user';
   LOGIN_URL = constants.NODE_URL + '/api/login';
   PROFILE_URL = constants.NODE_URL + '/api/profile';
   LOGOUT_URL = constants.NODE_URL + '/api/logout';
   SECTION_URL = constants.NODE_URL + '/api/section';
 
-  createUser(username, password) {
+  register(username, password) {
     const user = {
       username: username,
       password: password
     };
 
-    return fetch(this.USER_URL, {
+    return fetch(this.REGISTER_URL, {
       body: JSON.stringify(user),
       method: 'post',
       credentials: 'include',
@@ -57,6 +58,17 @@ export class UserServiceClient {
     return fetch(this.LOGOUT_URL, {
       method: 'post',
       credentials: 'include'
+    });
+  }
+
+  updateProfile(user) {
+    return fetch(this.PROFILE_URL, {
+      method: 'put',
+      credentials: 'include',
+      body: JSON.stringify(user),
+      headers : {
+        'content-type': 'application/json'
+      }
     });
   }
 

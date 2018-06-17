@@ -4,7 +4,8 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">Username</label>
     <div class="col-8">
-      <input [(ngModel)]="user.username"
+      <input [disabled]="true"
+             [(ngModel)]="user.username"
              placeholder="username"
              class="form-control"/>
     </div>
@@ -78,19 +79,23 @@
   <div class="form-group row">
     <label class="col-2 col-form-label"></label>
     <div class="col-8">
+      <a *ngIf="user.username === 'admin'"
+         routerLink="/admin">Admin Page</a>
       <a routerLink="/home" class="float-right">Home</a>
     </div>
   </div>
 
-  <h2>Sections {{enrollments.length}}</h2>
-  <ul class="list-group">
-    <li class="list-group-item"
-        *ngFor="let enrollment of enrollments">
-      {{enrollment.section.name}}({{enrollment.section.seats}})
-      <button class="btn btn-primary float-right"
-              (click)="unenroll(enrollment.section._id)">Unenroll
-      </button>
-    </li>
-  </ul>
+  <div *ngIf="user.username !== 'admin'">
+    <h2>Sections {{enrollments.length}}</h2>
+    <ul class="list-group">
+      <li class="list-group-item"
+          *ngFor="let enrollment of enrollments">
+        {{enrollment.section.name}}({{enrollment.section.seats}})
+        <button class="btn btn-primary float-right"
+                (click)="unenroll(enrollment.section._id)">Unenroll
+        </button>
+      </li>
+    </ul>
+  </div>
 
 </div>

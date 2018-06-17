@@ -25,10 +25,10 @@ export class SectionListComponent implements OnInit {
 
   setParams(params) {
     this.courseId = params['courseId'];
-    this.loadCourses(this.courseId);
+    this.loadSections(this.courseId);
   }
 
-  loadCourses(courseId) {
+  loadSections(courseId) {
     this.sectionService.findSectionsForCourse(courseId)
       .then((sections) => this.sections = sections);
   }
@@ -38,19 +38,13 @@ export class SectionListComponent implements OnInit {
       .then((response) => {
         if (response.status === 409) {
           alert('already enrolled');
-        }
-        if (response.status === 404) {
+        } else if (response.status === 404) {
           alert('no seats available');
+        } else {
+          this.router.navigate(['profile']);
         }
-        this.router.navigate(['profile']);
       });
   }
-
-  createSection(sectionName, seats) {
-    this.sectionService.createSection(this.courseId, sectionName, seats)
-      .then(() => this.loadCourses(this.courseId));
-  }
-
 
   ngOnInit() {
   }
