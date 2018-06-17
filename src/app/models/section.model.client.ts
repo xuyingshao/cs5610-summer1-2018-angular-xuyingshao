@@ -1,5 +1,5 @@
 export class Section {
-  id: number;
+  id: string;
   name: string;
   seats: number;
   courseId: number;

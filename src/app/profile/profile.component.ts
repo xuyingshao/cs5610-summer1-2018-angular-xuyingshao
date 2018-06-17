@@ -17,8 +17,7 @@ export class ProfileComponent implements OnInit {
               private enrollmentService: EnrollmentServiceClient) {
   }
 
-  // user: User = new User();
-  user = {};
+  user: User = new User();
   enrollments = [];
 
   logout() {

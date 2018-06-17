@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   username;
   password;
-  passoword2;
+  password2;
 
   register(username, password, password2) {
     if (password !== password2) {

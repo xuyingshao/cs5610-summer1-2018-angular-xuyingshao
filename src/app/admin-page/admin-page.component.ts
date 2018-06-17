@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SectionServiceClient} from '../services/section.service.client';
 import {CourseServiceClient} from '../services/course.service.client';
+import {Section} from '../models/section.model.client';
 
 @Component({
   selector: 'app-admin-page',
@@ -17,7 +18,9 @@ export class AdminPageComponent implements OnInit {
   selectedCourse = '';
   sections = [];
   selectedSection = '';
-  section = {};
+  section: Section = new Section();
+  sectionName = '';
+  seats = '';
 
   // editing = false;
 
