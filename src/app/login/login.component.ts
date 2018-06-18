@@ -10,14 +10,14 @@ import {UserServiceClient} from '../services/user.service.client';
 export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
-              private service: UserServiceClient) {
+              private userService: UserServiceClient) {
   }
 
   username;
   password;
 
   login(username, password) {
-    this.service.login(username, password)
+    this.userService.login(username, password)
       .then((response) => {
         if (response.status !== 404) {
           this.router.navigate(['profile']);
@@ -29,5 +29,4 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

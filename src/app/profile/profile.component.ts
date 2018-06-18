@@ -12,7 +12,7 @@ import {EnrollmentServiceClient} from '../services/enrollment.service.client';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private service: UserServiceClient,
+  constructor(private userService: UserServiceClient,
               private router: Router,
               private enrollmentService: EnrollmentServiceClient) {
   }
@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   enrollments = [];
 
   logout() {
-    this.service.logout()
+    this.userService.logout()
       .then(() => this.router.navigate(['login']));
   }
 
@@ -32,20 +32,24 @@ export class ProfileComponent implements OnInit {
 
   loadEnrollments() {
     this.enrollmentService.findEnrollmentsForStudent()
-      .then((enrollments) => {
-        this.enrollments = enrollments;
-      });
+      .then(enrollments => this.enrollments = enrollments);
   }
 
   update() {
-    this.service.updateProfile(this.user)
+    this.userService.updateProfile(this.user)
       .then(() => this.loadEnrollments());
   }
 
 
   ngOnInit() {
-    this.service.profile()
-      .then(user => this.user = user);
+    this.userService.profile()
+      .then((user) => {
+        if (user === undefined) {
+          this.router.navigate(['login']);
+        } else {
+          this.user = user;
+        }
+      });
     this.loadEnrollments();
   }
 }

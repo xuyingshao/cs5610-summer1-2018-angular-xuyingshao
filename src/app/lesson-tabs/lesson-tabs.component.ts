@@ -10,7 +10,7 @@ import {Lesson} from '../models/lesson.model.client';
 })
 export class LessonTabsComponent implements OnInit {
 
-  constructor(private service: LessonServiceClient,
+  constructor(private lessonService: LessonServiceClient,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.setParams(params));
   }
@@ -25,13 +25,13 @@ export class LessonTabsComponent implements OnInit {
     this.moduleId = params['moduleId'];
     this.lessonId = params['lessonId'];
 
-    console.log(this.lessonId);
-
-    this.loadLessons(this.courseId, this.moduleId);
+    if (this.courseId !== undefined && this.moduleId !== undefined) {
+      this.loadLessons(this.courseId, this.moduleId);
+    }
   }
 
   loadLessons(courseId, moduleId) {
-    this.service.findAllLessonsForModule(courseId, moduleId)
+    this.lessonService.findAllLessonsForModule(courseId, moduleId)
       .then(lessons => this.lessons = lessons);
   }
 

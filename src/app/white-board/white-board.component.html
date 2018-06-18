@@ -1,20 +1,20 @@
 <div class="container-fluid">
-  <div class="container-fluid row">
+  <div class="container-fluid row smallHeader">
     <h1 class="col-4">
       White Board
     </h1>
 
     <span class="text-right col-8">
-
-    <a routerLink="/login">Login</a>
-      &nbsp;/&nbsp;
-    <a routerLink="/register">Register</a>
-       <!--/-->
-      <!--<a routerLink="/profile">Profile</a>-->
+    <a routerLink="/login"
+       *ngIf="!loggedIn">Login</a>
+    <a routerLink="/register"
+       *ngIf="!loggedIn"> / Register</a>
+      <a routerLink="/profile"
+         *ngIf="loggedIn">Profile</a>
     </span>
   </div>
 
-  <ul>
+  <ul *ngIf="loggedIn">
     <li>Enrolled courses</li>
     <li *ngFor="let course of courses">
       {{course.title}}

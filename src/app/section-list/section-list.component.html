@@ -1,21 +1,43 @@
-<div class="container-fluid">
+<div class="container">
 
-  <div class="container-fluid row">
+  <div class="container-fluid row smallHeader">
     <h1 class="col-4">
       Section List
     </h1>
     <span class="text-right col-8">
-    <a routerLink="/home">Go Back</a>
+    <a routerLink="/home">Home</a>
     </span>
   </div>
 
-  <ul class="list-group">
-    <li class="list-group-item"
-        *ngFor="let section of sections">
-      {{section.name}} {{section.seats}}
-      <button class="btn btn-primary float-right"
-              (click)="enroll(section)">Enroll
-      </button>
-    </li>
-  </ul>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th class="text-center">
+         Section Name
+      </th>
+      <th class="text-center">
+        Seats Available
+      </th>
+      <th class="text-center">
+        Enroll
+      </th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr *ngFor="let section of sections">
+      <td class="text-center">
+        {{section.name}}
+      </td>
+      <td class="text-center">
+        {{section.seats}}
+      </td>
+      <td class="text-center">
+        <button class="btn btn-primary"
+                (click)="enroll(section)">Enroll
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>

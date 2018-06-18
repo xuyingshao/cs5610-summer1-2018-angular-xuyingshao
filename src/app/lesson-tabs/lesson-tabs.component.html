@@ -1,5 +1,4 @@
 <div>
-  <h3>Lessons for Module: {{moduleId}}</h3>
   <ul class="nav nav-tabs">
     <li class="nav-item"
         *ngFor="let lesson of lessons">
@@ -10,6 +9,8 @@
       </a>
     </li>
   </ul>
-  <app-widget-list>
-  </app-widget-list>
+  <div class="container-fluid widgetList">
+    <app-widget-list>
+    </app-widget-list>
+  </div>
 </div>

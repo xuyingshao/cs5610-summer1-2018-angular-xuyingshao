@@ -3,6 +3,8 @@ import {SessionServiceClient} from '../services/session.service.client';
 import {SectionServiceClient} from '../services/section.service.client';
 import {CourseServiceClient} from '../services/course.service.client';
 import {EnrollmentServiceClient} from '../services/enrollment.service.client';
+import {UserServiceClient} from '../services/user.service.client';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-white-board',
@@ -20,6 +22,7 @@ export class WhiteBoardComponent implements OnInit {
   enrollments = [];
   courses = [];
   currentUser = {};
+  loggedIn = false;
 
   loadCourses() {
     this.enrollmentService.findEnrollmentsForStudent()
@@ -30,8 +33,6 @@ export class WhiteBoardComponent implements OnInit {
         this.enrollments.map((enrollment) => {
           this.courseService.findCourseById(enrollment.section.courseId)
             .then(course => {
-              console.log(this.courses.indexOf(course));
-
               if (this.courses.indexOf(course) === -1) {
                 this.courses.push(course);
               }
@@ -40,17 +41,20 @@ export class WhiteBoardComponent implements OnInit {
       });
   }
 
-  // isLoggedIn() {
-  //   alert('loggedin');
-  //   this.sessionService.getSession()
-  //     .then(currentUser => this.currentUser = currentUser);
-  //
-  //   console.log(this.currentUser);
-  // }
+  isLoggedIn() {
+    this.sessionService.getSession()
+      .then(currentUser => {
+        if (currentUser === undefined) {
+          this.loggedIn = false;
+        } else {
+          this.loggedIn = true;
+          this.currentUser = currentUser;
+          this.loadCourses();
+        }
+      });
+  }
 
   ngOnInit() {
-    this.loadCourses();
-    // this.isLoggedIn();
-    // console.log(this.currentUser);
+    this.isLoggedIn();
   }
 }

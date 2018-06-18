@@ -11,7 +11,7 @@ import {Module} from '../models/module.model.client';
 })
 export class ModuleListComponent implements OnInit {
 
-  constructor(private service: ModuleServiceClient,
+  constructor(private moduleService: ModuleServiceClient,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.setParams(params));
   }
@@ -24,11 +24,13 @@ export class ModuleListComponent implements OnInit {
     this.courseId = params['courseId'];
     this.moduleId = params['moduleId'];
 
-    this.loadModules(this.courseId);
+    if (this.courseId !== undefined) {
+      this.loadModules(this.courseId);
+    }
   }
 
   loadModules(courseId) {
-    this.service.findAllModulesForCourse(courseId)
+    this.moduleService.findAllModulesForCourse(courseId)
       .then(modules => this.modules = modules);
   }
 

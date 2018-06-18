@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <div class="container-fluid row">
+  <div class="container-fluid row smallHeader">
     <h1 class="col-4">
       Section Editor
     </h1>
@@ -34,13 +34,13 @@
         <li class="list-group-item webdev"
             *ngFor="let section of sections"
             [ngClass]="{'active' : section._id == selectedSection}">
-          <div (click)="selectSection(section._id)">{{section.name}}</div>
-          <button class="btn btn-danger"
-                  (click)="removeSection(section._id)">Remove Section
-          </button>
-          <!--<button class="btn btn-primary"-->
-                  <!--(click)="enableEditing()">Edit Section-->
+          <div (click)="selectSection(section._id)">{{section.name}}
+          <!--<button class="btn btn-danger"-->
+          <!--(click)="removeSection(section._id)">Remove Section-->
           <!--</button>-->
+          <i class="fa fa-times float-right"
+             (click)="removeSection(section._id)"></i>
+          </div>
         </li>
       </ul>
       <input placeholder="Section Name"

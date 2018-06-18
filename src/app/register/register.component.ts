@@ -10,7 +10,7 @@ import {UserServiceClient} from '../services/user.service.client';
 export class RegisterComponent implements OnInit {
 
   constructor(private router: Router,
-              private service: UserServiceClient) {
+              private userService: UserServiceClient) {
   }
 
   username;
@@ -18,10 +18,14 @@ export class RegisterComponent implements OnInit {
   password2;
 
   register(username, password, password2) {
-    if (password !== password2) {
+    if (username === undefined) {
+      alert('username cannot be empty!');
+    } else if (password === undefined || password2 === undefined) {
+      alert('password cannot be empty!');
+    } else if (password !== password2) {
       alert('passwords don\'t match!');
     } else {
-      this.service.register(username, password)
+      this.userService.register(username, password)
         .then((response) => {
           if (response.status === 409) {
             alert('username already exists!');

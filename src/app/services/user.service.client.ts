@@ -51,7 +51,11 @@ export class UserServiceClient {
     return fetch(this.PROFILE_URL, {
       credentials: 'include'
     })
-      .then(response => response.json());
+      .then(response => {
+        if (response.status !== 404) {
+          return response.json();
+        }
+      });
   }
 
   logout() {

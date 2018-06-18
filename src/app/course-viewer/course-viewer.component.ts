@@ -10,7 +10,7 @@ import {Course} from '../models/course.model.client';
 })
 export class CourseViewerComponent implements OnInit {
 
-  constructor(private service: CourseServiceClient,
+  constructor(private courseService: CourseServiceClient,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.loadCourse(params['courseId']));
   }
@@ -18,7 +18,7 @@ export class CourseViewerComponent implements OnInit {
   course: Course = new Course();
 
   loadCourse(courseId) {
-    this.service.findCourseById(courseId)
+    this.courseService.findCourseById(courseId)
       .then(course => this.course = course);
   }
 

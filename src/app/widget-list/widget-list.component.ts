@@ -12,33 +12,28 @@ export class WidgetListComponent implements OnInit {
 
   constructor(private service: WidgetServiceClient,
               private route: ActivatedRoute) {
-    this.route.params.subscribe(params => this.setContext(params));
+    this.route.params.subscribe(params => this.setParams(params));
   }
 
-  // courseId = 0;
-  // moduleId = 0;
-  // lessonId = 0;
-  context;
-  widgets = [];    // FIXME, strongly typed, widget model
+  courseId = 0;
+  moduleId = 0;
+  lessonId = 0;
+  widgets = [];
 
-  // setParams(params) {
-  //   this.courseId = params['courseId'];
-  //   this.moduleId = params['moduleId'];
-  //   this.lessonId = params['lessonId'];
-  //
-  //   this.loadWidgets(this.lessonId);
-  // }
+  setParams(params) {
+    this.courseId = params['courseId'];
+    this.moduleId = params['moduleId'];
+    this.lessonId = params['lessonId'];
 
-  setContext(params) {
-    this.context = params;
-    this.loadWidgets(params.lessonId);
+    if (this.lessonId !== undefined) {
+      this.loadWidgets(this.lessonId);
+    }
   }
+
 
   loadWidgets(lessonId) {
-    // console.log(this.lessonId);   // FIXME, delete
     this.service.findAllWidgetsForLesson(lessonId)
       .then(widgets => this.widgets = widgets);
-    // this.widgets.forEach(widget => console.log(widget.widgetType));    // FIXME, delete
   }
 
   ngOnInit() {

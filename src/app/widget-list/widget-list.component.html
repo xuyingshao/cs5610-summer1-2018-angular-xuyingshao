@@ -2,7 +2,10 @@
   <!--{{widget.widgetType}}-->
   <div [ngSwitch]="widget.widgetType">
 
-    <div *ngSwitchCase="'Heading'">
+    <div *ngSwitchCase="'Heading'"
+         class="form-control container widget">
+      <div>name: {{widget.name}}</div>
+      <div>content:</div>
       <div [ngSwitch]="widget.size">
         <h1 *ngSwitchCase="1">{{widget.text}}</h1>
         <h2 *ngSwitchCase="2">{{widget.text}}</h2>
@@ -13,32 +16,48 @@
       </div>
     </div>
 
-    <div *ngSwitchCase="'Link'">
+    <div *ngSwitchCase="'Link'"
+         class="form-control container widget">
+      <div>name: {{widget.name}}</div>
+      <div>content:</div>
       <a href="{{widget.href}}">{{widget.text}}</a>
     </div>
 
-    <div *ngSwitchCase="'List'">
-      <ul class="list-group"
-          *ngFor="let item of widget.listItems.split('|')">
-        <li class="list-group-item">
-          {{item}}
-        </li>
-      </ul>
+    <div *ngSwitchCase="'List'"
+         class="form-control container widget">
+      <div>name: {{widget.name}}</div>
+      <div>content:</div>
+      <div [ngSwitch]="widget.listType">
+        <div *ngSwitchCase="'ORDERED'">
+          <ol>
+            <li *ngFor="let item of widget.listItems.split('\n')">
+              {{item}}
+            </li>
+          </ol>
+        </div>
+        <div *ngSwitchCase="'UNORDERED'">
+          <ul>
+            <li *ngFor="let item of widget.listItems.split('\n')">
+              {{item}}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div *ngSwitchCase="'Image'">
+    <div *ngSwitchCase="'Image'"
+         class="form-control container widget">
+      <div>name: {{widget.name}}</div>
+      <div>content:</div>
       <img src="{{widget.src}}"/>
     </div>
 
-
-    <div *ngSwitchCase="'Exam'">
-      <h1>Exam Widget</h1>
+    <div *ngSwitchCase="'Paragraph'"
+         class="form-control container widget">
+      <div>name: {{widget.name}}</div>
+      <div>content:</div>
+      <p>{{widget.text}}</p>
     </div>
-
-    <div *ngSwitchCase="'Assignment'">
-      <h1>Assignment Widget</h1>
-    </div>
-
 
   </div>
 </div>

@@ -41,8 +41,14 @@ export class AdminPageComponent implements OnInit {
   }
 
   createSection(sectionName, seats) {
-    this.sectionService.createSection(this.selectedCourse, sectionName, seats)
-      .then(() => this.loadSections(this.selectedCourse));
+    if (seats < 0) {
+      alert('seats cannot be negative');
+    } else if (sectionName === '' || seats === '') {
+      alert('please enter valid section name and seats');
+    } else {
+      this.sectionService.createSection(this.selectedCourse, sectionName, seats)
+        .then(() => this.loadSections(this.selectedCourse));
+    }
   }
 
   loadSections(courseId) {
@@ -53,6 +59,7 @@ export class AdminPageComponent implements OnInit {
   removeSection(sectionId) {
     this.sectionService.deleteSection(sectionId)
       .then(() => this.loadSections(this.selectedCourse));
+    this.section = new Section();
   }
 
   // enableEditing() {

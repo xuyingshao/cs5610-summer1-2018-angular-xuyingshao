@@ -10,12 +10,12 @@ import { Course } from '../models/course.model.client';
 
 export class CourseGridComponent implements OnInit {
 
-  constructor(private service: CourseServiceClient) { }
+  constructor(private courseService: CourseServiceClient) { }
 
   courses: Course[] = [];
 
   ngOnInit() {
-    this.service.findAllCourses()
+    this.courseService.findAllCourses()
       .then(courses => this.courses = courses);
   }
 

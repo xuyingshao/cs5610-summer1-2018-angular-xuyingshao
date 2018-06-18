@@ -4,14 +4,18 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{course.title}}</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <h6 class="card-subtitle">course description</h6>
+        <br/>
         <div>
-          <a class="btn btn-primary"
-             routerLink="/course/{{course.id}}">View Detail</a>
+          <button class="btn btn-outline-primary course-grid-button"
+                  routerLink="/course/{{course.id}}">View Detail
+          </button>
         </div>
         <div>
-          <a class="btn btn-primary"
-             routerLink="/course/{{course.id}}/section">Enroll</a>
+          <button class="btn btn-outline-primary course-grid-button"
+                  routerLink="/course/{{course.id}}/section">Enroll
+          </button>
+
         </div>
       </div>
     </div>

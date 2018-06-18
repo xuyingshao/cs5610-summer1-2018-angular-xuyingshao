@@ -1,11 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 import {AppComponent} from './app.component';
 import {WhiteBoardComponent} from './white-board/white-board.component';
-import {CourseNavigatorComponent} from './course-navigator/course-navigator.component';
-import {CourseNavigatorServiceClient} from './services/course-navigator.service.client';
 import {CourseServiceClient} from './services/course.service.client';
 import {CourseGridComponent} from './course-grid/course-grid.component';
 import {CourseViewerComponent} from './course-viewer/course-viewer.component';
@@ -31,7 +30,6 @@ import {SessionServiceClient} from './services/session.service.client';
   declarations: [
     AppComponent,
     WhiteBoardComponent,
-    CourseNavigatorComponent,
     CourseGridComponent,
     CourseViewerComponent,
     ModuleListComponent,
@@ -46,10 +44,10 @@ import {SessionServiceClient} from './services/session.service.client';
   imports: [
     BrowserModule,
     FormsModule,
-    Routing
+    Routing,
+    AngularFontAwesomeModule
   ],
   providers: [
-    CourseNavigatorServiceClient,
     CourseServiceClient,
     ModuleServiceClient,
     LessonServiceClient,
